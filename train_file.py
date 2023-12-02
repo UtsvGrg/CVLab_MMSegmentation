@@ -84,7 +84,7 @@ cfg.test_dataloader = cfg.val_dataloader
 # cfg.load_from = 'deeplabv3plus_r101-d8_512x1024_80k_cityscapes_20200606_114143-068fcfe9.pth'
 
 # Set up working dir to save files and logs.
-cfg.work_dir = './work_dirs/tutorial4'
+cfg.work_dir = './work_dirs/tutorial'
 
 cfg.train_cfg.max_iters = 80000
 cfg.train_cfg.val_interval = 1000
@@ -95,7 +95,6 @@ cfg.default_hooks.checkpoint.interval = 10000
 cfg['randomness'] = dict(seed=0)
 
 # Let's have a look at the final config used for training
-print("Final Config\n\n\n\n\n")
 print(f'Config:\n{cfg.pretty_text}')
 
 runner = Runner.from_cfg(cfg)
