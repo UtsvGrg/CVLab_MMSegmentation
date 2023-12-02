@@ -117,7 +117,7 @@ The easiest way to set up MMseg data for training is to divide your data into fo
 >
 > For example:  if the training image is 0000002.jpg, then the respective ground image in the train_label must all be either 0000002.jpg or 0000002.png
 
-I have provided a python script called [split_creator.py]()
+I have provided a python script called [split_creator.py](split_creator.py)
 
 The copy_images() function copies all the image from inside the sub-directories to a destination folder and in process all renames the file based on suffix replacer to get consistent filenames for both train_img and train_label folders.
 
@@ -181,7 +181,7 @@ models = MMSegInferencer.list_models('mmseg')
 
 ### Training and Validation
 
-The further steps to training is mentioned in the [train_file.py]()
+The further steps to training is mentioned in the [train_file.py](train_file.py)
 
 We begin with defining the dataset root and directory for images and annotations, along with the classes and the palette in the similar fashion as mentioned above.
 
