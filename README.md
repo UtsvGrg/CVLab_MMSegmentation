@@ -94,10 +94,10 @@ models = MMSegInferencer.list_models('mmseg')
 
 ```
 ![output](Other/demo.png)
-
-The Demo Image
+<p align="center"> Demo image </p>
 
 ![output](Other/inferred_demo.png)
+<p align="center"> Inferred image using deeplabv3plus for cityscapes</p>
 
 ### Preparing Dataset
 
