@@ -208,8 +208,6 @@ Then we edit the config based on our requirements.
 ```python
 from mmengine.runner import Runner
 
-cfg = Config.fromfile('/content/mmsegmentation/deeplabv3plus_r101-d8_4xb2-80k_cityscapes-512x1024.py')
-
 # The size based on which the image is cropped before loading it into the model.
 cfg.crop_size = (512,512)
 
