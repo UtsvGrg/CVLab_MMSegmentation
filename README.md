@@ -15,14 +15,14 @@ MMSegmentation is a toolbox that provides a framework for unified implementation
 0. Download and install Miniconda from the official website.
 1. Create a conda environment and activate it.
    
-```
+```powershell
 conda create --name openmmlab python=3.8 -y
 conda activate openmmlab
 ```
 
 2. Install PyTorch following official instructions (Always prefer Pip Method)
    
-```
+```powershell
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
 
@@ -40,7 +40,7 @@ print(torch.version.cuda)
 
 0. Install MMCV using MIM
 
-```
+```powershell
 pip install -U openmim
 mim install mmengine
 mim install "mmcv>=2.0.0"
@@ -49,7 +49,7 @@ pip install ftfy (Incase, otherwise requirement already satisfied)
 
 1. Git clone MMSegmentation
 
-```
+```powershell
 git clone -b main https://github.com/open-mmlab/mmsegmentation.git
 cd mmsegmentation
 pip install -v -e .
@@ -59,13 +59,13 @@ pip install -v -e .
 
 1. Download config and checkpoint files.
 
-```
+```powershell
 mim download mmsegmentation --config pspnet_r50-d8_4xb2-40k_cityscapes-512x1024 --dest .
 ```
 
 2. Verify the inference demo.
 
-```
+```powershell
 python demo/image_demo.py demo/demo.png configs/pspnet/pspnet_r50-d8_4xb2-40k_cityscapes-512x1024.py pspnet_r50-d8_512x1024_40k_cityscapes_20200605_003338-2966598c.pth --device cuda:0 --out-file result.jpg
 ```
 
@@ -156,7 +156,7 @@ palette = [[0,0,0], [128, 0, 0], [0, 128, 0], [0, 0, 128], [128, 128, 0], [128,0
 
 Config file: A configuration file in MMSegmentation is a text file that contains various settings and parameters to configure the behavior of the segmentation model. These configuration files are typically written in YAML (YAML Ain't Markup Language) format, which is a human-readable data serialization format.
 
-```
+```powershell
 # Download config and checkpoint files
 !mim download mmsegmentation --config deeplabv3plus_r101-d8_4xb2-80k_cityscapes-512x1024 --dest .
 ```
