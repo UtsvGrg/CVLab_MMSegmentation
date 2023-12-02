@@ -179,6 +179,8 @@ The further steps to training is mentioned in the [train_file.py]()
 We begin with defining the dataset root and directory for images and annotations, along with the classes and the palette in the similar fashion as mentioned above.
 
 ```python
+from mmseg.registry import DATASETS
+from mmseg.datasets import BaseSegDataset
 #Now we register this dataset module
 
 @DATASETS.register_module()
@@ -194,6 +196,8 @@ The name of the dataset module in the above code is IDD_Data and is initialized 
 ```
 # The class Config imported from mmengine is used to easily modify the config according to our requirements.
 
+from mmengine import Config
+
 cfg = Config.fromfile('/content/mmsegmentation/deeplabv3plus_r101-d8_4xb2-80k_cityscapes-512x1024.py')
 # This print the config in readable format.
 print(f'Config:\n{cfg.pretty_text}')
@@ -202,6 +206,10 @@ print(f'Config:\n{cfg.pretty_text}')
 Then we edit the config based on our requirements.
 
 ```
+from mmengine import Config
+from mmengine.runner import Runner
+cfg = Config.fromfile('/content/mmsegmentation/deeplabv3plus_r101-d8_4xb2-80k_cityscapes-512x1024.py')
+
 # The size based on which the image is cropped before loading it into the model.
 cfg.crop_size = (512,512)
 
