@@ -31,7 +31,7 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 
 To determine if your PyTorch installation supports GPU
 
-```
+```python
 import torch
 print(torch.version.cuda)
 ```
@@ -71,9 +71,10 @@ python demo/image_demo.py demo/demo.png configs/pspnet/pspnet_r50-d8_4xb2-40k_ci
 
 You will see a new image result.jpg on your current folder, where segmentation masks are covered on all objects.
 
-_________________________________________________________________________________________________________
-Inferencing and generating seg map based on previously trained models	
+### Inferencing
+(Generating seg map based on previously trained models)
 
+```python
 from mmseg.apis import MMSegInferencer
 # Load models into memory
 inferencer = MMSegInferencer(model='deeplabv3plus_r18-d8_4xb2-80k_cityscapes-512x1024')
@@ -89,23 +90,27 @@ inferencer(images, out_dir='outputs', img_out_dir='vis', pred_out_dir='pred')
 # this prints out the list of all the model that MMSeg supports
 models = MMSegInferencer.list_models('mmseg')
 
+```
 
-Preparing Dataset
+### Preparing Dataset
 
 Once you untar your data tar file. For instance idd-20k.tar.gz. You will be left with the image folder idd20kII with gtFine and leftImg8bit subfolders. This can now be your data root.
 
 The easiest way to set up MMseg data for training is to divide your data into four folders. You can mkdir the following four directories in your data root.
 
-train_img: Folder with all the training images
-train_label: Folder with all the respective ground images of the training images
-val_img: Folder with all the validation images
-val_label: Folder with all the respective ground images of the validation images
+1. train_img: Folder with all the training images
+2. train_label: Folder with all the respective ground images of the training images
+3. val_img: Folder with all the validation images
+4. val_label: Folder with all the respective ground images of the validation images
 
-Important: The name of the training image and its respective ground image must have the same filename for both training and validation. (The extensions could be different) 
 
-For example:  if the training image is 0000002.jpg, then the respective ground image in the train_label must all be either 0000002.jpg or 0000002.png
+> [!IMPORTANT]
+> The name of the training image and its respective ground image must have the same filename for both training and
+> validation. (The extensions could be different) 
+>
+> For example:  if the training image is 0000002.jpg, then the respective ground image in the train_label must all be either 0000002.jpg or 0000002.png
 
-I have provided a python script called split_creator.py.
+I have provided a python script called [split_creator.py]()
 
 The copy_images() function copies all the image from inside the sub-directories to a destination folder and in process all renames the file based on suffix replacer to get consistent filenames for both train_img and train_label folders.
 
@@ -115,6 +120,7 @@ Make sure that you correctly set the data_root, train_img_dir, train_ann_dir, va
 
 For Example:
 
+```python
 # define dataset root and directory for images and annotations
 data_root = 'idd20kII'
 train_img_dir = 'train_img'
@@ -122,7 +128,11 @@ train_ann_dir = 'train_label'
 val_img_dir = 'val_img'
 val_ann_dir = 'val_label'
 
+```
+
 Define the different classes and the corresponding palette based on the segmentation followed by the ground truth images. 
+
+```python
 
 # define class and palette for better visualization
 classes = ('road', 'drivable fallback', 'sidewalk', 'non-drivable fallback', 'person', 'rider', 'motorcycle', 'bicycle', 'auto-rickshaw', 'car', 'truck', 'bus', 'vehicle fallback', 'curb', 'wall', 'fence', 'guard rail', 'billboard', 'traffic sign', 'traffic light', 'pole', 'obs fallback', 'building', 'bridge', 'vegetation', 'sky', 'unlabelled')
@@ -133,8 +143,10 @@ Note, the classes and palette here is based on the Indian Driving Dataset. In ca
 
 palette = [[0,0,0], [128, 0, 0], [0, 128, 0], [0, 0, 128], [128, 128, 0], [128,0,128], [0, 128, 128], [128, 128, 128]] (The palette definition follows BGR format instead of RGB]	
 
+```
 
-The major advantage of using MMSegmentation for training purposes is the ease it provides to try out different segmentation models. Just download the required model config file and you are all good to go. 
+> [!TIP]
+> The major advantage of using MMSegmentation for training purposes is the ease it provides to try out different segmentation models. Just download the required model config file and you are all good to go. 
 
 Config file: A configuration file in MMSegmentation is a text file that contains various settings and parameters to configure the behavior of the segmentation model. These configuration files are typically written in YAML (YAML Ain't Markup Language) format, which is a human-readable data serialization format.
 
