@@ -174,11 +174,12 @@ models = MMSegInferencer.list_models('mmseg')
 
 ### Training and Validation
 
-The further steps to training is mentioned in the train_file.py 
+The further steps to training is mentioned in the [train_file.py]()
 
 We begin with defining the dataset root and directory for images and annotations, along with the classes and the palette in the similar fashion as mentioned above.
 
-Now we register this dataset module
+```python
+#Now we register this dataset module
 
 @DATASETS.register_module()
 
@@ -186,18 +187,21 @@ class IDD_Data(BaseSegDataset):
   METAINFO = dict(classes = classes, palette = palette)
   def __init__(self, **kwargs):
     super().__init__(img_suffix='.jpg', seg_map_suffix='.png', **kwargs)
+```
 
 The name of the dataset module in the above code is IDD_Data and is initialized with classes and palette we defined earlier in the code. Also the img_suffix and seg_map_suffix tells about the file type to be used when training.
 
-The class Config imported from mmengine is used to easily modify the config according to our requirements.
+```
+# The class Config imported from mmengine is used to easily modify the config according to our requirements.
 
 cfg = Config.fromfile('/content/mmsegmentation/deeplabv3plus_r101-d8_4xb2-80k_cityscapes-512x1024.py')
 # This print the config in readable format.
-print(f'Config:\n{cfg.pretty_text}') 
+print(f'Config:\n{cfg.pretty_text}')
+```
 
 Then we edit the config based on our requirements.
 
-
+```
 # The size based on which the image is cropped before loading it into the model.
 cfg.crop_size = (512,512)
 
@@ -218,8 +222,6 @@ cfg.data_root = data_root
 
 # No. of images to be loaded in a single batch 
 cfg.train_dataloader.batch_size = 4
-
-
 
 # We then change the scale in the train_pipeline and test_pipeline based on the dimension of our image. 
 
@@ -287,12 +289,7 @@ Now running epochs on the model based on the final config
 runner = Runner.from_cfg(cfg)
 runner.train()
 
-
-
-
-
-
-
+```
 
 
 # Plotting new seg maps using the trained model.
