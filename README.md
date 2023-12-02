@@ -8,6 +8,8 @@ Semantic segmentation is the task of clustering parts of an image together that 
 
 MMSegmentation is a toolbox that provides a framework for unified implementation and evaluation of semantic segmentation methods, and contains high-quality implementations of popular semantic segmentation methods and datasets.
 
+Link to the entire MMSeg Documentation: [MMSeg](https://github.com/open-mmlab/mmsegmentation/tree/main)
+
 ## Installation
 
 ### Prerequisites
@@ -91,6 +93,11 @@ inferencer(images, out_dir='outputs', img_out_dir='vis', pred_out_dir='pred')
 models = MMSegInferencer.list_models('mmseg')
 
 ```
+![output](Other/demo.png)
+
+The Demo Image
+
+![output](Other/inferred_demo.png)
 
 ### Preparing Dataset
 
@@ -147,7 +154,7 @@ palette = [[0], [1], [2], [3], [4], [5], [6], [7], [8], [9], [10], [11], [12], [
 # with RGB channels instead of mono channels, you can define the palette as: 
 
 palette = [[0,0,0], [128, 0, 0], [0, 128, 0], [0, 0, 128], [128, 128, 0], [128,0,128], [0, 128, 128], [128, 128, 128]]
-(The palette definition follows BGR format instead of RGB]	
+(The palette definition follows BGR format instead of RGB)
 
 ```
 
