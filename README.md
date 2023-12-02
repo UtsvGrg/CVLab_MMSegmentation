@@ -135,13 +135,19 @@ Define the different classes and the corresponding palette based on the segmenta
 ```python
 
 # define class and palette for better visualization
-classes = ('road', 'drivable fallback', 'sidewalk', 'non-drivable fallback', 'person', 'rider', 'motorcycle', 'bicycle', 'auto-rickshaw', 'car', 'truck', 'bus', 'vehicle fallback', 'curb', 'wall', 'fence', 'guard rail', 'billboard', 'traffic sign', 'traffic light', 'pole', 'obs fallback', 'building', 'bridge', 'vegetation', 'sky', 'unlabelled')
+classes = ('road', 'drivable fallback', 'sidewalk', 'non-drivable fallback', 'person', 'rider', 'motorcycle',
+'bicycle', 'auto-rickshaw', 'car', 'truck', 'bus', 'vehicle fallback', 'curb', 'wall', 'fence', 'guard rail',
+'billboard', 'traffic sign', 'traffic light', 'pole', 'obs fallback', 'building', 'bridge', 'vegetation', 'sky',
+'unlabelled')
 
-palette = [[0], [1], [2], [3], [4], [5], [6], [7], [8], [9], [10], [11], [12], [13], [14], [15], [16], [17], [18], [19], [20], [21], [22], [23], [24], [25], [255]]
+palette = [[0], [1], [2], [3], [4], [5], [6], [7], [8], [9], [10], [11], [12], [13], [14], [15], [16], [17],
+[18], [19], [20], [21], [22], [23], [24], [25], [255]]
 
-Note, the classes and palette here is based on the Indian Driving Dataset. In case of ground images with RGB channels instead of mono channels, you can define the palette as: 
+# Note, the classes and palette here is based on the Indian Driving Dataset. In case of ground images
+# with RGB channels instead of mono channels, you can define the palette as: 
 
-palette = [[0,0,0], [128, 0, 0], [0, 128, 0], [0, 0, 128], [128, 128, 0], [128,0,128], [0, 128, 128], [128, 128, 128]] (The palette definition follows BGR format instead of RGB]	
+palette = [[0,0,0], [128, 0, 0], [0, 128, 0], [0, 0, 128], [128, 128, 0], [128,0,128], [0, 128, 128], [128, 128, 128]]
+(The palette definition follows BGR format instead of RGB]	
 
 ```
 
@@ -150,21 +156,23 @@ palette = [[0,0,0], [128, 0, 0], [0, 128, 0], [0, 0, 128], [128, 128, 0], [128,0
 
 Config file: A configuration file in MMSegmentation is a text file that contains various settings and parameters to configure the behavior of the segmentation model. These configuration files are typically written in YAML (YAML Ain't Markup Language) format, which is a human-readable data serialization format.
 
-For example:
-
+```
 # Download config and checkpoint files
 !mim download mmsegmentation --config deeplabv3plus_r101-d8_4xb2-80k_cityscapes-512x1024 --dest .
+```
 
 This downloads the resnet101 based deeplabv3 model fine tuned for training cityscapes with 80k iterations and having a crop size of 512x1024. You can get a list of the config file on MMSeg using 
 
+```python
 from mmseg.apis import MMSegInferencer
 models = MMSegInferencer.list_models('mmseg')
+```
 
-The base train MIoU values associated with each of the models are mentioned on the MMSegmentation github. 
+> [!NOTE]
+> The base train MIoU values associated with each of the models are mentioned on the MMSegmentation github. 
+> The above command also downloads the checkpoint .pkl file for the required model, which can be directly used in case > required to finetune the model, instead of base training it.	
 
-The above command also downloads the checkpoint .pkl file for the required model, which can be directly used in case required to finetune the model, instead of base training it.	
-
-Training and Validation
+### Training and Validation
 
 The further steps to training is mentioned in the train_file.py 
 
