@@ -170,7 +170,7 @@ models = MMSegInferencer.list_models('mmseg')
 
 > [!NOTE]
 > The base train MIoU values associated with each of the models are mentioned on the MMSegmentation github. 
-> The above command also downloads the checkpoint .pkl file for the required model, which can be directly used in case > required to finetune the model, instead of base training it.	
+> The above command also downloads the checkpoint .pkl file for the required model, which can be directly used in case required to finetune the model, instead of base training it.	
 
 ### Training and Validation
 
