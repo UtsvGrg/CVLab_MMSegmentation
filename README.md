@@ -193,7 +193,7 @@ class IDD_Data(BaseSegDataset):
 
 The name of the dataset module in the above code is IDD_Data and is initialized with classes and palette we defined earlier in the code. Also the img_suffix and seg_map_suffix tells about the file type to be used when training.
 
-```
+```python
 # The class Config imported from mmengine is used to easily modify the config according to our requirements.
 
 from mmengine import Config
@@ -205,10 +205,8 @@ print(f'Config:\n{cfg.pretty_text}')
 
 Then we edit the config based on our requirements.
 
-```
-from mmengine import Config
+```python
 from mmengine.runner import Runner
-cfg = Config.fromfile('/content/mmsegmentation/deeplabv3plus_r101-d8_4xb2-80k_cityscapes-512x1024.py')
 
 # The size based on which the image is cropped before loading it into the model.
 cfg.crop_size = (512,512)
@@ -299,9 +297,9 @@ runner.train()
 
 ```
 
+# Plotting Result SegMaps
 
-# Plotting new seg maps using the trained model.
-	
+```python
 from mmseg.apis import init_model, inference_model, show_result_pyplot
 
 # Init the model from the config and the checkpoint
@@ -315,8 +313,10 @@ plt.figure(figsize=(8, 6))
 vis_result = show_result_pyplot(model, img, result, withLabels=False)
 plt.imshow(mmcv.bgr2rgb(vis_result))
 
-The inference_model returns a SegDataSample, to get the segmented image array you can use
+# The inference_model returns a SegDataSample, to get the segmented image array you can use
 
 seg_arr = result._pred_sem_seg
+
+```
 
 "Results based on IDD Training"
