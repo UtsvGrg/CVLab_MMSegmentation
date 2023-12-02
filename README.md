@@ -280,16 +280,16 @@ cfg.load_from = 'deeplabv3plus_r101-d8_512x1024_80k_cityscapes_20200606_114143-0
 cfg.work_dir = './work_dirs/tutorial'
 
 # This edits the maximum number of iterations
-cfg.train_cfg.max_iters = 200
+cfg.train_cfg.max_iters = 80000
 
 # The iteration interval after which the trained model is evaluated on the val set.
-cfg.train_cfg.val_interval = 200
+cfg.train_cfg.val_interval = 10000
 
 # The logger interval for iterations
-cfg.default_hooks.logger.interval = 10
+cfg.default_hooks.logger.interval = 1000
 
 # The interval to save the checkpoint in the working directory as .pkl.
-cfg.default_hooks.checkpoint.interval = 100
+cfg.default_hooks.checkpoint.interval = 10000
 
 # Set seed to facilitate reproducing the result
 cfg['randomness'] = dict(seed=0)
@@ -303,6 +303,10 @@ runner = Runner.from_cfg(cfg)
 runner.train()
 
 ```
+
+>[!IMPORTANT]
+> The above config file finetunes the model after continuing from the saved checkpoint of deeplabv3plus - cityscapes .pkl file
+> Incase you want to base train your model, just comment the cfg.load_from line.
 
 ### Plotting Result SegMaps
 
