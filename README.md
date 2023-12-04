@@ -347,3 +347,8 @@ The log clearly shows the number of iterations done based on the hooker iterval 
 Here I have attached the MIoU values on Indian Driving Dataset base trained on DeepLabV3+ for 80000 epochs.
 
 ![Output](Other/miou_table.png)
+
+To compare the changes
+
+![output](Other/rural_road.jpg)
+![output](Other/rural_road_trained_segmented.png)
