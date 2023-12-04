@@ -339,4 +339,11 @@ seg_arr = result._pred_sem_seg
 
 ```
 
-"Results based on IDD Training"
+### Results
+
+We saved the checkpoints in work_dirs/tutorial. So from there we get the generated [log](generated_log.log) 
+The log clearly shows the number of iterations done based on the hooker iterval and the MIoU result on the validation set. 
+
+Here I have attached the MIoU values on Indian Driving Dataset base trained on DeepLabV3+ for 80000 epochs.
+
+![Output](Other/miou_table.png)
