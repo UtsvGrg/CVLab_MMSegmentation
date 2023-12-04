@@ -351,4 +351,4 @@ Here I have attached the MIoU values on Indian Driving Dataset base trained on D
 To compare the changes
 
 ![output](Other/rural_road.jpg)
-![output](Other/rural_road_trained_segmented.png)
+![output](Other/rural_road_train_segmented.png)
