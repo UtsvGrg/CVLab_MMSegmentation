@@ -4,6 +4,15 @@
 
 Semantic segmentation is the task of clustering parts of an image together that belong to the same object class. It is a form of pixel-level prediction because each pixel in an image is classified according to a category. Some example benchmarks for this task are Cityscapes, PASCAL VOC and ADE20K. Models are usually evaluated with the Mean Intersection-Over-Union (Mean IoU) and Pixel Accuracy metrics.
 
+### Aim
+Traditional deeplabv3 plus model trained on cityscapes dataset which provides a great MioU of 80 on urban roads fails miserably on rural or low resolution dataset. 
+For Example:
+
+![output](Other/rural_road.jpg)
+![output](Other/rural_road_segmented.png)
+
+This shows that finetuning the previously trained model or base training the model for the custom dataset is extremely important. We do so in this project using MMSegmentation
+
 ### What is MMSegmentation?
 
 MMSegmentation is a toolbox that provides a framework for unified implementation and evaluation of semantic segmentation methods, and contains high-quality implementations of popular semantic segmentation methods and datasets.
