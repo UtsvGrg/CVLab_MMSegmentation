@@ -66,6 +66,15 @@ cd mmsegmentation
 pip install -v -e .
 ```
 
+2. Installing Other Requirements
+
+```powershell
+apt-get update && apt-get install libgl1
+pip install regex
+pip install scipy
+pip install prettytable
+```
+
 ### Verify the installation
 
 1. Download config and checkpoint files.
